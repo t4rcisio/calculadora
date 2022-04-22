@@ -1,17 +1,15 @@
-import { useState } from "react";
-import { Field, Formik } from "formik";
 import { Badge, Form, InputGroup } from "react-bootstrap";
 
 const Label = ({ arrayLabel, addValue, addIndex }) => {
   return (
     <>
       {arrayLabel.length <= 1 ? (
-        <h1>
+        <h4>
           <Badge>Informe a quatidade de campos para começar</Badge>
-        </h1>
+        </h4>
       ) : (
         <>
-          <InputGroup name="Form" fluid>
+          <InputGroup name="Form">
             {arrayLabel.map((id) => (
               <Form.Control
                 style={{ width: "100px" }}
@@ -19,9 +17,7 @@ const Label = ({ arrayLabel, addValue, addIndex }) => {
                 name={id}
                 key={id.toString()}
                 onChange={addValue}
-                onClick={() => {
-                  addIndex(id);
-                }}
+                onFocus={() => addIndex(id)}
               />
             ))}
           </InputGroup>
