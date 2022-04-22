@@ -20,7 +20,6 @@ const Home = () => {
   const [operation, setOperation] = useState(undefined);
   const [solution, setSolution] = useState(false);
   const [error, setError] = useState(false);
-  const [sizeFont, setSize] = useState(20);
 
   // Captura o evento de mudança de valor no elemento e o envia para ser incluído no array
   const addValue = (event) => {
@@ -34,7 +33,9 @@ const Home = () => {
 
   // Gera um array de N posições para a criação dos campos conforme o usuário digita
   const setLabel = (event) => {
-    var data = [...Array(Number(event.target.value)).keys()];
+    const size = event.target.value;
+    if (size <= 0) return false;
+    var data = [...Array(Number(size)).keys()];
     setLabelNumber(data);
   };
 
